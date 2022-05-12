@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db/blog
+  db:
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=blog
+    image: mysql:5.6
